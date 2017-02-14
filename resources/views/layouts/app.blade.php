@@ -35,8 +35,8 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                    <a class="navbar-brand" href="{{ url('/') }}" style="margin-top:-10px;">
+                        <img src="{{asset('resources/assets/images/logo80.png')}}" alt="logo">
                     </a>
                 </div>
 
@@ -50,8 +50,8 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @if (Auth::guest())
-                            <li><a href="{{ url('/login') }}">Login</a></li>
-                            <li><a href="{{ url('/register') }}">Register</a></li>
+                            <li><a href="{{ url('/login') }}">登录</a></li>
+                            <li><a href="{{ url('/register') }}">注册</a></li>
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -78,10 +78,23 @@
             </div>
         </nav>
 
+        <div class="container">
+            @if (session()->has('flash_notification.message'))
+                <div class="alert alert-{{ session('flash_notification.level') }}">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+
+                    {!! session('flash_notification.message') !!}
+                </div>
+            @endif
+        </div>
+
         @yield('content')
     </div>
 
     <!-- Scripts -->
     <script src="{{asset('public/js/app.js')}}"></script>
+    <script>
+        $('#flash-overlay-modal').modal();
+    </script>
 </body>
 </html>

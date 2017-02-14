@@ -53,7 +53,7 @@ class RegisterController extends Controller
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
-        ]);
+        ],['name.require'=>'用户名不能为空','email.require'=>'邮箱不能为空','password.require'=>'密码不能为空','name.unique'=>'用户名已经存在','email.unique'=>'邮箱已经存在','password.confirmed'=>'两次密码不一致']);
     }
 
     /**

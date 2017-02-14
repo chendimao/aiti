@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('name',20)->unique();
             $table->string('email',40)->unique();
-            $table->string('password',16);
+            $table->string('password',100);
             $table->string('avatar')->commit('头像');
             $table->integer('confirmation_token')->default(0)->commit('验证token');
             $table->integer('is_active')->default(0)->commit('时候激活邮箱');
@@ -29,7 +29,7 @@ class CreateUsersTable extends Migration
             $table->integer('likes_count')->default(0)->commit('点赞数');
             $table->integer('followers_count')->default(0)->commit('关注数');
             $table->integer('following_count')->default(0)->commit('被关注数');
-          //  $table->json('options')->nullabel();
+            $table->json('options')->nullabel();
             $table->rememberToken();
             $table->timestamps();
         });
