@@ -170,7 +170,7 @@ return [
          */
 
         //
-
+        Stevenyangecho\UEditor\UEditorServiceProvider::class,
         /*
          * Application Service Providers...
          */
