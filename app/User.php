@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Naux\Mail\SendCloudTemplate;
@@ -29,6 +30,11 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+
+    public function owns(Model $request){
+            return $this->id==$request->user_id;
+
+    }
 
     public function sendPasswordResetNotification($token)
     {

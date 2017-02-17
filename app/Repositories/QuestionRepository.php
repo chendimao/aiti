@@ -14,15 +14,26 @@ use App\Topic;
 
 class QuestionRepository
 {
+
     public function byIdWithTopics($id){
         return Question::where('id',$id)->with('belongsToManyTopic')->first();
     }
+
+
 
 
     public function create(array $attribute)
     {
         return Question::create($attribute);
     }
+
+
+    public function getQuestionsFeed(){
+
+        return Question::published()->latest('updated_at')->with('belongsToUser')->get();
+    }
+
+
 
 
     public function normalizeTopic(array $topics){
@@ -55,4 +66,10 @@ class QuestionRepository
 
         })->toArray();
     }
+
+
+    public function ById($id){
+        return Question::find($id);
+    }
+
 }

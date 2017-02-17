@@ -17,4 +17,14 @@ class Question extends Model
     {
         return $this->belongsToMany(Topic::class,'question_topic')->withTimestamps();
     }
+
+    public function belongsToUser(){
+        return $this->belongsTo(User::class,'user_id','id');
+    }
+
+    public function scopePublished($query){
+        return $query->where('is_hidden','F');
+    }
+
+
 }

@@ -26,7 +26,9 @@ class QuestionsController extends Controller
      */
     public function index()
     {
-        flash('你好，这是首页','success');
+        $questions=$this->questionRepository->getQuestionsFeed();
+
+        return view('questions.index',compact('questions'));
     }
 
     /**
@@ -36,7 +38,7 @@ class QuestionsController extends Controller
      */
     public function create()
     {
-        //
+
         return view('questions.create');
     }
 
@@ -73,6 +75,7 @@ class QuestionsController extends Controller
     {
         //
         $question=$this->questionRepository->byIdWithTopics($id);
+
         return view('questions.show',compact('question'));
 
     }
@@ -85,7 +88,15 @@ class QuestionsController extends Controller
      */
     public function edit($id)
     {
-        //
+
+        $question=$this->questionRepository->ById($id);
+        //判断编辑者是否为问题发起者
+        if(Auth::user()->owns($question)){
+            return view('questions.edit',compact('question'));
+        }
+
+        return back();
+
     }
 
     /**
@@ -95,9 +106,19 @@ class QuestionsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(QuestionRequest $request, $id)
     {
-        //
+        $questions=$this->questionRepository->ById($id);
+        $topic=$this->questionRepository->normalizeTopic($request->get('topics'));
+        $questions->update([
+            'title'=>$request->get('title'),
+            'body'=>$request->get('body'),
+
+        ]);
+
+        $questions->belongsToManyTopic()->sync($topic);
+
+        return redirect()->route('questions.show',[$questions->id]);
     }
 
     /**
@@ -108,7 +129,14 @@ class QuestionsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $questions=$this->questionRepository->ById($id);
+
+        if(Auth::user()->owns($questions)){
+            $questions->delete();
+            return redirect('/');
+        }
+
+        abort(403,'Forbidden');
     }
 
 

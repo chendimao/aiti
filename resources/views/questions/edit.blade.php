@@ -12,11 +12,12 @@
                         {{--@endforeach--}}
 
                     <div class="panel-body">
-                        <form action="/questions" method='post'>
+                        <form action="/questions/{{$question->id}}" method='post'>
                             <input type="hidden" name="_token" value="{{csrf_token()}}">
                             <div class="form-group">
+
                                 <label for="title"  >问题标题</label>
-                                <input type="text" name="title" value="{{old('title')}}" id="title" placeholder="请输入标题" class="form-control {{$errors->has('title'?'has-error':'')}}">
+                                <input type="text" name="title" value="{{$question->title}}" id="title" placeholder="请输入标题" class="form-control {{$errors->has('title'?'has-error':'')}}">
                                 @if($errors->has('title'))
                                     <span class="help-block">
                                         <strong style="color:red;">{{$errors->first('title')}}</strong>
@@ -24,17 +25,20 @@
                                 @endif
 
                             </div>
-
+                            <input type="hidden" name="_method" value="put">
                             <div class="form-group">
-                                <select name="topics[]" class="js-example-placeholder-multiple js-data-example-ajax form-control" multiple="multiple">
 
+                                <select name="topics[]" class="js-example-placeholder-multiple js-data-example-ajax form-control" multiple="multiple">
+                                    @foreach($question->belongsToManyTopic as $topic)
+                                        <option value="{{$topic->id}}" selected='selected'>{{$topic->name}}</option>
+                                    @endforeach
                                 </select>
                                 
                             </div>
 
                             <div class="form-group {{$errors->has('body'?'has-error':'')}}" >
                                 <script id="container" name="body" style="height:250px;" type="text/plain">
-                                  {!! old('body') !!}
+                                    {{$question->body}}
                                 </script>
                             </div>
                             @if($errors->has('body'))
