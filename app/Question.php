@@ -12,4 +12,9 @@ class Question extends Model
     public $fillable=[
       'title','body','user_id'
     ];
+
+    public function belongsToManyTopic()
+    {
+        return $this->belongsToMany(Topic::class,'question_topic')->withTimestamps();
+    }
 }

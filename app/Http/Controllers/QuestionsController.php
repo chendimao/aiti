@@ -3,15 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\QuestionRequest;
-use App\Question;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use App\Repositories;
 class QuestionsController extends Controller
 {
+    protected $questionRepository;
+
     //验证
-    public function __construct()
+    public function __construct(Repositories\QuestionRepository $questionRepository)
     {
+        $this->questionRepository=$questionRepository;
         $this->middleware('auth')->except('index','show');
     }
 
@@ -45,7 +48,9 @@ class QuestionsController extends Controller
      */
     public function store(QuestionRequest $request)
     {
+
         //
+        $topics=$this->questionRepository->normalizeTopic($request->get('topics'));
 
 
         $data=[
@@ -53,7 +58,8 @@ class QuestionsController extends Controller
             'body'=>$request->get('body'),
             'user_id'=>\Auth::id()
         ];
-        $question=Question::create($data);
+        $question=$this->questionRepository->create($data);
+        $question->belongsToManyTopic()->attach($topics);
         return redirect()->route('questions.show',[$question->id]);
     }
 
@@ -66,7 +72,7 @@ class QuestionsController extends Controller
     public function show($id)
     {
         //
-        $question=Question::find($id);
+        $question=$this->questionRepository->byIdWithTopics($id);
         return view('questions.show',compact('question'));
 
     }
@@ -104,4 +110,8 @@ class QuestionsController extends Controller
     {
         //
     }
+
+
+
+
 }
