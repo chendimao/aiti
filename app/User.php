@@ -36,6 +36,11 @@ class User extends Authenticatable
 
     }
 
+
+    public function hasManyAnswer(){
+        return $this->hasMany(Answer::class);
+    }
+
     public function sendPasswordResetNotification($token)
     {
         // 模板变量
@@ -51,4 +56,17 @@ class User extends Authenticatable
             $message->to($this->email);
         });
     }
+
+
+
+    //answers
+
+    public function belongsToManyFollower(){
+        return $this->belongsToMany(User::class,'users_questions','user_id','question_id')->withTimestamps();
+    }
+
+    public function IsFollower($UserId,$QuestionId){
+        return !!Follow::where('user_id',$UserId)->where('question_id',$QuestionId)->count();
+    }
+
 }

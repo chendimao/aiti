@@ -27,3 +27,6 @@ Route::resource('questions','QuestionsController',[
         'edit'=>'questions.edit',
     ]
 ]);
+
+Route::post('/questions/{question}/answer','AnswersController@store');
+Route::get('/questions/{id}/follower','QuestionsController@follower');

@@ -13,18 +13,30 @@ class Question extends Model
       'title','body','user_id'
     ];
 
+    //topics
+
     public function belongsToManyTopic()
     {
         return $this->belongsToMany(Topic::class,'question_topic')->withTimestamps();
     }
 
+
     public function belongsToUser(){
         return $this->belongsTo(User::class,'user_id','id');
+    }
+
+    public function hasManyAnswer(){
+        return $this->hasMany(Answer::class);
     }
 
     public function scopePublished($query){
         return $query->where('is_hidden','F');
     }
+
+
+
+
+
 
 
 }

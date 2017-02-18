@@ -4,17 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\QuestionRequest;
 
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Repositories;
 class QuestionsController extends Controller
 {
     protected $questionRepository;
-
+    protected $userRepository;
+    protected $ToggleFollower;
     //验证
-    public function __construct(Repositories\QuestionRepository $questionRepository)
+    public function __construct(Repositories\QuestionRepository $questionRepository,Repositories\UserRepository $userRepository)
     {
         $this->questionRepository=$questionRepository;
+        $this->userRepository=$userRepository;
         $this->middleware('auth')->except('index','show');
     }
 
@@ -74,9 +77,22 @@ class QuestionsController extends Controller
     public function show($id)
     {
         //
-        $question=$this->questionRepository->byIdWithTopics($id);
+        $question=$this->questionRepository->byIdWithTopicsAndAnswers($id);
+
+
 
         return view('questions.show',compact('question'));
+
+    }
+
+    public function follower($id)
+    {
+        $UserId=Auth::user()->id;
+        $data=[$UserId=>$id];
+        $follower=$this->userRepository->byIdWithFollower($UserId);
+        $follower->belongsToManyFollower()->toggle($data);
+
+      return back();
 
     }
 

@@ -11,13 +11,15 @@ namespace App\Repositories;
 
 use App\Question;
 use App\Topic;
+use App\User;
 
 class QuestionRepository
 {
 
-    public function byIdWithTopics($id){
-        return Question::where('id',$id)->with('belongsToManyTopic')->first();
+    public function byIdWithTopicsAndAnswers($id){
+        return Question::where('id',$id)->with(['belongsToManyTopic','hasManyAnswer'])->first();
     }
+
 
 
 
@@ -70,6 +72,11 @@ class QuestionRepository
 
     public function ById($id){
         return Question::find($id);
+    }
+
+
+    public function byIdWithFollower($id){
+        return User::where('id',$id)->with('belongsToManyFollower')->get();
     }
 
 }

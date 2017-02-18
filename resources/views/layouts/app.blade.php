@@ -12,7 +12,7 @@
 
     <!-- Styles -->
     <link href="{{asset('public/css/app.css')}}" rel="stylesheet">
-
+    <link rel="stylesheet" href="{{asset('resources/assets/css/style.css')}}">
     <!-- Scripts -->
     <script>
         window.Laravel = <?php echo json_encode([
