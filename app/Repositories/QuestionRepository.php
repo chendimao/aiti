@@ -17,7 +17,7 @@ class QuestionRepository
 {
 
     public function byIdWithTopicsAndAnswers($id){
-        return Question::where('id',$id)->with(['belongsToManyTopic','hasManyAnswer'])->first();
+        return Question::where('id',$id)->with(['belongsToManyTopic','hasManyAnswer','belongsToUser'])->first();
     }
 
 

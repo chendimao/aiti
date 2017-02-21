@@ -79,8 +79,6 @@ class QuestionsController extends Controller
         //
         $question=$this->questionRepository->byIdWithTopicsAndAnswers($id);
 
-
-
         return view('questions.show',compact('question'));
 
     }
@@ -91,6 +89,7 @@ class QuestionsController extends Controller
         $data=[$UserId=>$id];
         $follower=$this->userRepository->byIdWithFollower($UserId);
         $follower->belongsToManyFollower()->toggle($data);
+
 
       return back();
 

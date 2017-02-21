@@ -34,7 +34,7 @@
 
 
             </div>
-
+            {{--关注问题--}}
             <div class="col-md-3">
                 <div class="panel panel-default">
                     <div class="panel-heading text-center">
@@ -58,12 +58,64 @@
                             {{--</a>--}}
 
                         {{--@endif--}}
-                        <question-follow-button question="{{$question->id}}" user="{{Auth::id()}}"></question-follow-button>
+                        <question-follow-button question="{{$question->id}}" ></question-follow-button>
 
                         <a href="#editor" class="btn btn-primary">撰写答案</a>
                     </div>
                 </div>
             </div>
+
+            {{--关注作者--}}
+            <div class="col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading text-center">
+                        <h3>关于作者</h3>
+
+                    </div>
+                    <div class="panel-body question_follow">
+                        <div class="media">
+                            <div class="media-left">
+                                <a href="#">
+                                    <img src="{{$question->belongsToUser->avatar}}" alt="{{$question->belongsToUser->name}}">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading">
+                                    <a href="">
+                                        {{$question->belongsToUser->name}}
+                                    </a>
+                                </h4>
+                            </div>
+
+                            <div class="user-statics">
+
+                                <div class="statics-item text-center">
+                                    <div class="static-text">问题</div>
+                                    <div class="static-content">{{$question->belongsToUser->question_count}}</div>
+                                </div>
+
+                                <div class="statics-item text-center">
+                                    <div class="static-text">回答</div>
+                                    <div class="static-content">{{$question->belongsToUser->answers_count}}</div>
+                                </div>
+
+
+                                <div class="statics-item text-center">
+                                    <div class="static-text">关注者</div>
+                                    <div class="static-content">{{$question->belongsToUser->favorites_count}}</div>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                        <question-follow-button question="{{$question->id}}" ></question-follow-button>
+
+                        <a href="#editor" class="btn btn-default">发送私信</a>
+                    </div>
+                </div>
+            </div>
+
 
 
             <div class="col-md-8 col-md-offset-1">

@@ -68,7 +68,14 @@ class User extends Authenticatable
     }
 
     public function IsFollower($UserId,$QuestionId){
-        return !!Follow::where('user_id',$UserId)->where('question_id',$QuestionId)->count();
+        return Follow::where('user_id',$UserId)->where('question_id',$QuestionId);
+    }
+
+
+    //用户与用户之间的多对多关系
+    public function belongsToManyFollowed()
+    {
+        return $this->belongsToMany(self::class,'followers','follower_id','followed_id')->withTimestamps();
     }
 
 }
