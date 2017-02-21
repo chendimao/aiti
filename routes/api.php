@@ -22,3 +22,38 @@ Route::get('/topics', function (Request $request) {
     $topics=\App\Topic::select(['id','name'])->where('name','like','%'.$request->query('q').'%')->get();
     return $topics;
 })->middleware('api');
+
+
+
+Route::post('/question/follower', function (Request $request) {
+
+    $followed=\App\Follow::where('user_id',$request->get('user'))->where('question_id',$request->get('question'))->count();
+
+    if($followed){
+       return response()->json(['followed'=>true]);
+    }else{
+        return response()->json(['followed'=>false]);
+    }
+
+})->middleware('auth:api');
+
+
+Route::post('/question/ToggleFollow', function (Request $request) {
+
+    $followed=\App\Follow::where('user_id',$request->get('user'))->where('question_id',$request->get('question'))->first();
+
+    if($followed!==null){
+
+            $followed->delete();
+        return response()->json(['followed'=>false]);
+    }
+
+    \App\Follow::create([
+        'question_id'=>$request->get('question'),
+        'user_id'=>$request->get('user'),
+
+    ]);
+
+    return response()->json(['followed'=>true]);
+
+})->middleware('api');

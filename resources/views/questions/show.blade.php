@@ -37,18 +37,29 @@
 
             <div class="col-md-3">
                 <div class="panel panel-default">
-                    <div class="panel-heading">
+                    <div class="panel-heading text-center">
                         <h2>{{$question->followers_count}}</h2>
                         <span>关注者</span>
                     </div>
                     <div class="panel-body question_follow">
-                        <a href="/questions/{{$question->id}}/follower" class="btn btn-default {{Auth::User()->IsFollower(Auth::User()->id,$question->id)?'btn-success':''}}">
-                            @if(Auth::User()->IsFollower(Auth::User()->id,$question->id))
-                                已关注
-                            @else
-                                关注该问题
-                            @endif
-                        </a>
+
+                        {{--@if(Auth::check())--}}
+                        {{--<a href="/questions/{{$question->id}}/follower" class="btn btn-default {{Auth::User()->IsFollower(Auth::User()->id,$question->id)?'btn-success':''}}">--}}
+                            {{--@if(Auth::User()->IsFollower(Auth::User()->id,$question->id))--}}
+                                {{--已关注--}}
+                            {{--@else--}}
+                                {{--关注该问题--}}
+                            {{--@endif--}}
+                        {{--</a>--}}
+                        {{--@else--}}
+
+                            {{--<a href="/login" class="btn btn-default">--}}
+                                    {{--登录后即可关注--}}
+                            {{--</a>--}}
+
+                        {{--@endif--}}
+                        <question-follow-button question="{{$question->id}}" user="{{Auth::id()}}"></question-follow-button>
+
                         <a href="#editor" class="btn btn-primary">撰写答案</a>
                     </div>
                 </div>

@@ -10,6 +10,7 @@ namespace App\Repositories;
 
 
 use App\Answer;
+use App\User;
 
 class AnswersRepository
 {
@@ -19,4 +20,10 @@ class AnswersRepository
              return User::where('id',$id)->with('belongsToManyFollower')->get();
 
             }
+
+    public function create(array $attribute)
+    {
+
+        return Answer::create($attribute);
+    }
 }
