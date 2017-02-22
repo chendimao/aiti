@@ -15,7 +15,7 @@ use Illuminate\Http\Request;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
-})->middleware('auth:api');
+})->middleware('api');
 
 
 Route::get('/topics', function (Request $request) {
@@ -26,74 +26,17 @@ Route::get('/topics', function (Request $request) {
 
 //用户关注问题
 
-Route::post('/question/follower', function (Request $request) {
-    $user=\Auth::guard('api')->user();
-    $followed=!!$user->IsFollower($user->id,$request->get('question'))->count();
-  //  $followed=\App\Follow::where('user_id',$user->id)->where('question_id',$request->get('question'))->count();
-
-    if($followed){
-       return response()->json(['followed'=>true]);
-    }else{
-        return response()->json(['followed'=>false]);
-    }
-
-})->middleware('auth:api');
+Route::post('/question/{question_id}/follower', 'QuestionsController@UserFollower')->middleware('auth:api');
 
 
-Route::post('/question/ToggleFollow', function (Request $request) {
-    $user=\Auth::guard('api')->user();
-    $question=\App\Question::find($request->get('question'));
-    $followed=$user->IsFollower($user->id,$question->id)->first();
-    //$followed=\App\Follow::where('user_id',$user->id)->where('question_id',$request->get('question'))->first();
-
-    if($followed!==null){
-
-        $question->decrement('followers_count');
-        $followed->delete();
-        return response()->json(['followed'=>false]);
-    }
-    $data=[$user->id=>$question->id];
-   $user->belongsToManyFollower()->toggle($data);
-    $question->increment('followers_count');
-    return response()->json(['followed'=>true]);
-
-})->middleware('auth:api');
+Route::post('/question/{question_id}/ToggleFollow','QuestionsController@ToggleFollow' )->middleware('api');
 
 
 //用户关注作者
 
-Route::post('/user/follower', function (Request $request) {
-    $user=\Auth::guard('api')->user();
-   // $followed=!!$user->IsUserFollower($user->id,$request->get('user'))->count();
-      $followed=\App\UserFollow::where('follower_id',$user->id)->where('followed_id',$request->get('user'))->count();
-
-    if($followed){
-        return response()->json(['followed'=>true]);
-    }else{
-        return response()->json(['followed'=>false]);
-    }
-
-})->middleware('auth:api');
+Route::get('/user/{auth_id}/follower', 'FollowerController@index')->middleware('api');
 
 
 
-Route::post('/user/ToggleFollow', function (Request $request) {
-    $UserFollow=\Auth::guard('api')->user();
-    $user=\App\User::find($request->get('user'));
-
-    //$followed=!!$user->IsUserFollower($UserFollow->id,$request->get('user'))->first();
-    $followed=\App\UserFollow::where('follower_id',$user->id)->where('followed_id',$request->get('user'))->first();
-
-    if($followed!==null){
-
-        $user->decrement('followers_count');
-        $followed->delete();
-        return response()->json(['followed'=>false]);
-    }
-    $data=[$UserFollow->id=>$user->id];
-    $user->belongsToManyFollowed()->toggle($data);
-    $user->increment('followers_count');
-    return response()->json(['followed'=>true]);
-
-})->middleware('api');
+Route::post('/user/{auth_id}/ToggleFollow', 'FollowerController@followed')->middleware('api');
 

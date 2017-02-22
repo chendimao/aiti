@@ -79,21 +79,11 @@ class QuestionsController extends Controller
         //
         $question=$this->questionRepository->byIdWithTopicsAndAnswers($id);
 
+
         return view('questions.show',compact('question'));
 
     }
 
-    public function follower($id)
-    {
-        $UserId=Auth::user()->id;
-        $data=[$UserId=>$id];
-        $follower=$this->userRepository->byIdWithFollower($UserId);
-        $follower->belongsToManyFollower()->toggle($data);
-
-
-      return back();
-
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -152,6 +142,44 @@ class QuestionsController extends Controller
         }
 
         abort(403,'Forbidden');
+    }
+
+
+    //用户关注问题
+
+    public function UserFollower($question_id)
+    {
+        $user=\Auth::user();
+        dd($user);
+        $followed=!!$user->IsFollower($user->id,$question_id)->count();
+        //  $followed=\App\Follow::where('user_id',$user->id)->where('question_id',$request->get('question'))->count();
+
+        if($followed){
+            return response()->json(['followed'=>true]);
+        }else{
+            return response()->json(['followed'=>false]);
+        }
+    }
+
+
+    public function ToggleFollow($question_id)
+    {
+        $user=\Auth::user();
+        echo ($user->id);
+        $question=\App\Question::find($question_id);
+        $followed=$user->IsFollower($user->id,$question->id)->first();
+        //$followed=\App\Follow::where('user_id',$user->id)->where('question_id',$request->get('question'))->first();
+
+        if($followed!==null){
+
+            $question->decrement('followers_count');
+            $followed->delete();
+            return response()->json(['followed'=>false]);
+        }
+        $data=[$user->id=>$question->id];
+        $user->belongsToManyFollower()->toggle($data);
+        $question->increment('followers_count');
+        return response()->json(['followed'=>true]);
     }
 
 

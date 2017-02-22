@@ -10,7 +10,7 @@
     export default{
         props:['question'],
         mounted(){
-        this.$http.post('/api/question/follower',{'question':this.question}).then(response=>{
+        this.$http.post('/api/question/'+this.question+'/follower').then(response=>{
 
             this.followed=response.data.followed
         });
@@ -23,7 +23,7 @@
         methods:{
             ToggleFollow(){
 
-                this.$http.post('/api/question/ToggleFollow',{'question':this.question}).then(response=>{
+                this.$http.post('/api/question/'+this.question+'/ToggleFollow').then(response=>{
 
                     this.followed=response.data.followed
                 });

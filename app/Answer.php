@@ -13,11 +13,12 @@ class Answer extends Model
 
     public function belongsToUser()
     {
-        return $this->belongsTo(User::class,'user_id','id');
+        return $this->belongsTo(User::class,'user_id');
     }
 
-    public function belongsToQuestion()
-    {
-        return $this->belongsTo(Question::class,'question_id','id');
+    public function belongsToQuestion(){
+        return $this->belongsTo(Question::class,'question_id');
     }
+
+
 }

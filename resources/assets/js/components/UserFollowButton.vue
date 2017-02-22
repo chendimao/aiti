@@ -11,7 +11,7 @@
         props:['user'],
         mounted(){
 
-            this.$http.post('/api/user/follower',{'user':this.user}).then(response=>{
+            this.$http.get('/api/user/'+this.user+'/follower').then(response=>{
                 console.log(response.data);
                 this.followed=response.data.followed
             });
@@ -23,8 +23,7 @@
         },
         methods:{
             ToggleFollow(){
-
-                this.$http.post('/api/user/ToggleFollow',{'question':this.user}).then(response=>{
+                this.$http.post('/api/user/'+this.user+'/ToggleFollow',{'user':this.user}).then(response=>{
                     console.log(response.data);
                     this.followed=response.data.followed
                 });

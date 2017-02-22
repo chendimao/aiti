@@ -58,8 +58,9 @@
                             {{--</a>--}}
 
                         {{--@endif--}}
+                        @if(Auth::check() && $question->id!==$question->user_id)
                         <question-follow-button question="{{$question->id}}" ></question-follow-button>
-
+                        @endif
                         <a href="#editor" class="btn btn-primary">撰写答案</a>
                     </div>
                 </div>
@@ -102,14 +103,17 @@
 
                                 <div class="statics-item text-center">
                                     <div class="static-text">关注者</div>
-                                    <div class="static-content">{{$question->belongsToUser->favorites_count}}</div>
+                                    <div class="static-content">{{$question->belongsToUser->following_count}}</div>
                                 </div>
 
 
 
                             </div>
                         </div>
-                        <user-follow-button user="{{$question->user_id}}" ></user-follow-button>
+                        @if(Auth::check() && $question->id!==$question->user_id)
+
+                            <user-follow-button user="{{$question->user_id}}" ></user-follow-button>
+                        @endif
 
                         <a href="#editor" class="btn btn-default">发送私信</a>
                     </div>
@@ -128,17 +132,18 @@
 
 
                         @foreach($question->hasManyAnswer as $answer)
+
                             <div class="media">
                                 <div class="media-left">
                                     <a href="">
-                                        <img src="{{$question->belongsToUser->avatar}}" alt="{{$question->belongsToUser->name}}">
+                                        <img src="{{$answer->belongsToUser->avatar}}" alt="{{$answer->belongsToUser->name}}">
                                     </a>
                                 </div>
 
                                 <div class="media-body">
                                     <h4 class="media-heading">
-                                        <a href="/user/{{$answer->id}}">
-                                            {{$question->belongsToUser->name}}
+                                        <a href="/user/{{$answer->user_id}}">
+                                            {{$answer->belongsToUser->name}}
                                         </a>
                                         {!! $answer->body!!}
                                     </h4>

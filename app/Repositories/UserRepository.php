@@ -19,5 +19,9 @@ class UserRepository
 
     }
 
+    public function ById($id){
+        return User::where('id',$id)->get();
+    }
+
 
 }

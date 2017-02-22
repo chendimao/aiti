@@ -30,3 +30,6 @@ Route::resource('questions','QuestionsController',[
 
 Route::post('/questions/{question}/answer','AnswersController@store');
 //Route::get('/questions/{id}/follower','QuestionsController@follower');
+
+
+Route::get('notifications','NotificationsController@index');

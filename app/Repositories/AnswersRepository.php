@@ -26,4 +26,10 @@ class AnswersRepository
 
         return Answer::create($attribute);
     }
+
+    public function byIdWithUser($id){
+
+        return Answer::where('id',$id)->with('belongsToQuestion')->get();
+
+    }
 }

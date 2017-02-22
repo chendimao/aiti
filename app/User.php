@@ -75,12 +75,12 @@ class User extends Authenticatable
     //用户与用户之间的多对多关系
     public function belongsToManyFollowed()
     {
-        return $this->belongsToMany(self::class,'followers','follower_id','followed_id')->withTimestamps();
+        return $this->belongsToMany(User::class,'followers','follower_id','followed_id')->withTimestamps();
     }
 
 
     public function IsUserFollower($follower_id,$followed_id){
-        return UserFollow::where('follower_id',2)->where('followed_id',1)->first();
+        return UserFollow::where('follower_id',$follower_id)->where('followed_id',$followed_id);
     }
 
 }

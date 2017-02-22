@@ -21,11 +21,13 @@ class AnswersController extends Controller
 
 
         $answer=$this->answers->create([
-            'question_id'=>$question,
             'user_id'=>Auth::id(),
+            'question_id'=>$question,
             'body'=>$request->get('body'),
         ]);
+
         $answer->belongsToQuestion()->increment('answers_count');
+
         return back();
         }
     
