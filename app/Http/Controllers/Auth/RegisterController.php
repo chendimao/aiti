@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Mailer\UserMailer;
 use Illuminate\Support\Facades\Mail;
 use App\User;
 use App\Http\Controllers\Controller;
@@ -78,19 +79,8 @@ class RegisterController extends Controller
     }
 
 
-    private function sendVerifyEmailTo($user){
+    private function sendVerifyEmailTo(User $user){
         // 模板变量
-        $bind_data = [
-            'url' => route('email.verify',['confirmation_token'=>$user->confirmation_token]),
-            'name'=>$user->name,
-        ];
-        $template = new SendCloudTemplate('aiti_register', $bind_data);
-
-
-        Mail::raw($template, function ($message) use ($user) {
-            $message->from('admin@aiti.xin', '爱提网');
-
-            $message->to($user->email);
-        });
+        (new UserMailer())->VerifyEmail($user);
     }
 }

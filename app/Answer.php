@@ -8,7 +8,7 @@ class Answer extends Model
 {
     protected $table='answers';
     protected $fillable=[
-    'user_id','question_id','body'
+    'user_id','question_id','body','votes_count'
     ];
 
     public function belongsToUser()
@@ -19,6 +19,14 @@ class Answer extends Model
     public function belongsToQuestion(){
         return $this->belongsTo(Question::class,'question_id');
     }
+
+    public function belongsToManyCommend()
+    {
+        return $this->belongsToMany(User::class,'answers_users','answers_id')->withTimestamps();
+    }
+
+
+
 
 
 }

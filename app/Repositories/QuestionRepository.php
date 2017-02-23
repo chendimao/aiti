@@ -9,6 +9,7 @@
 namespace App\Repositories;
 
 
+use App\Answer;
 use App\Question;
 use App\Topic;
 use App\User;
@@ -78,5 +79,12 @@ class QuestionRepository
     public function byIdWithFollower($id){
         return User::where('id',$id)->with('belongsToManyFollower')->get();
     }
+
+//    public function byIdWithCommend($id){
+//        return Answer::where('id',$id)->with('belongsToManyCommend')->get();
+//    }
+
+
+
 
 }

@@ -31,9 +31,13 @@ class FollowerController extends Controller
         //$followed=!!$user->IsUserFollower($UserFollow->id,$request->get('user'))->first();
         $followed=$UserFollow->IsUserFollower($UserFollow->id,$auth_id)->first();
         //dd($UserFollow->id.'----'.$request->get('user'));
+
         if($followed!==null){
+
             //关注通知
-            $user->notify(new NewUserFollowNotfication());
+
+           $z= $user->notify(new NewUserFollowNotfication());
+
 
 
             $user->decrement('following_count');

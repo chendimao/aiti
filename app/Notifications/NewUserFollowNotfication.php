@@ -3,6 +3,7 @@
 namespace App\Notifications;
 
 use App\Channels\SendCloudChannel;
+use App\Mailer\UserMailer;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -61,19 +62,7 @@ class NewUserFollowNotfication extends Notification
 
     public function toSendCloud($notifiable)
     {
-        // 模板变量
-        $bind_data = [
-            'url' => url('http://aiti.xin/'),
-            'name'=>Auth::guard('api')->user()->name
-        ];
-        $template = new SendCloudTemplate('aiti_new_user_follow', $bind_data);
-
-
-        Mail::raw($template, function ($message) use($notifiable) {
-            $message->from('admin@aiti.xin', '爱提网');
-
-            $message->to($notifiable->email);
-        });
+        (new UserMailer())->FollowNotify($notifiable->email);
     }
 
 

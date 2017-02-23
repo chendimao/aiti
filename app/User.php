@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Mailer\UserMailer;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -45,18 +46,9 @@ class User extends Authenticatable
 
     public function sendPasswordResetNotification($token)
     {
-        // 模板变量
-        $bind_data = [
-            'url' => url('password/reset', $token),
-        ];
-        $template = new SendCloudTemplate('aiti_reset_password', $bind_data);
 
+        (new UserMailer())->passwordReset($token,$this->email);
 
-        Mail::raw($template, function ($message)  {
-            $message->from('admin@aiti.xin', '爱提网');
-
-            $message->to($this->email);
-        });
     }
 
 

@@ -29,14 +29,19 @@ Route::get('/topics', function (Request $request) {
 Route::post('/question/{question_id}/follower', 'QuestionsController@UserFollower')->middleware('auth:api');
 
 
-Route::post('/question/{question_id}/ToggleFollow','QuestionsController@ToggleFollow' )->middleware('api');
+Route::post('/question/{question_id}/ToggleFollow','QuestionsController@ToggleFollow' )->middleware('auth:api');
 
 
 //用户关注作者
 
-Route::get('/user/{auth_id}/follower', 'FollowerController@index')->middleware('api');
+Route::get('/user/{auth_id}/follower', 'FollowerController@index')->middleware('auth:api');
 
 
 
-Route::post('/user/{auth_id}/ToggleFollow', 'FollowerController@followed')->middleware('api');
+Route::post('/user/{auth_id}/ToggleFollow', 'FollowerController@followed')->middleware('auth:api');
 
+
+//用户点赞
+Route::get('/answer/{comment_id}/commend', 'AnswersController@commend')->middleware('auth:api');
+
+Route::post('/answer/{comment_id}/ToggleCommend', 'AnswersController@ToggleCommend')->middleware('auth:api');

@@ -149,8 +149,8 @@ class QuestionsController extends Controller
 
     public function UserFollower($question_id)
     {
-        $user=\Auth::user();
-        dd($user);
+        $user=\Auth::guard('api')->user();
+
         $followed=!!$user->IsFollower($user->id,$question_id)->count();
         //  $followed=\App\Follow::where('user_id',$user->id)->where('question_id',$request->get('question'))->count();
 
@@ -165,7 +165,7 @@ class QuestionsController extends Controller
     public function ToggleFollow($question_id)
     {
         $user=\Auth::user();
-        echo ($user->id);
+
         $question=\App\Question::find($question_id);
         $followed=$user->IsFollower($user->id,$question->id)->first();
         //$followed=\App\Follow::where('user_id',$user->id)->where('question_id',$request->get('question'))->first();

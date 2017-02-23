@@ -58,7 +58,8 @@
                             {{--</a>--}}
 
                         {{--@endif--}}
-                        @if(Auth::check() && $question->id!==$question->user_id)
+                        @if(Auth::check() && Auth::id()!==$question->user_id)
+
                         <question-follow-button question="{{$question->id}}" ></question-follow-button>
                         @endif
                         <a href="#editor" class="btn btn-primary">撰写答案</a>
@@ -110,7 +111,7 @@
 
                             </div>
                         </div>
-                        @if(Auth::check() && $question->id!==$question->user_id)
+                        @if(Auth::check() && Auth::id()!==$question->user_id)
 
                             <user-follow-button user="{{$question->user_id}}" ></user-follow-button>
                         @endif
@@ -135,6 +136,7 @@
 
                             <div class="media">
                                 <div class="media-left">
+                                    <commend-button user="{{$answer->id}}"></commend-button>
                                     <a href="">
                                         <img src="{{$answer->belongsToUser->avatar}}" alt="{{$answer->belongsToUser->name}}">
                                     </a>
