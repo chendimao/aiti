@@ -1,9 +1,13 @@
 <template>
-    <button class="btn btn-default"
-            v-text="text"
-            v-bind:class="{'btn-success':followed}"
-            v-on:click="ToggleFollow"
-    ></button>
+
+
+        <button class="btn btn-default"
+                v-text="text"
+                v-bind:class="{'btn-success':followed}"
+                v-on:click="ToggleFollow"
+        ></button>
+
+
 </template>
 
 <script>

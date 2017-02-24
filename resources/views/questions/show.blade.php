@@ -28,10 +28,11 @@
                                 </form>
                             </div>
                         @endif
+
+                            <comments type="question" id="{{$question->id}}" count="{{$question->comments_count}}"></comments>
                     </div>
 
                 </div>
-
 
             </div>
             {{--关注问题--}}
@@ -115,8 +116,7 @@
 
                             <user-follow-button user="{{$question->user_id}}" ></user-follow-button>
                         @endif
-
-                        <a href="#editor" class="btn btn-default">发送私信</a>
+                        <send-message-button user="{{$question->user_id}}"></send-message-button>
                     </div>
                 </div>
             </div>
@@ -150,6 +150,9 @@
                                         {!! $answer->body!!}
                                     </h4>
                                 </div>
+
+                                <comments type="answer" id="{{$answer->id}}" count="{{$answer->comments()->count()}}"></comments>
+
                             </div>
                         @endforeach
 

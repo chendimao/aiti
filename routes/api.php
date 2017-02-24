@@ -45,3 +45,16 @@ Route::post('/user/{auth_id}/ToggleFollow', 'FollowerController@followed')->midd
 Route::get('/answer/{comment_id}/commend', 'AnswersController@commend')->middleware('auth:api');
 
 Route::post('/answer/{comment_id}/ToggleCommend', 'AnswersController@ToggleCommend')->middleware('auth:api');
+
+
+//发送私信
+
+Route::post('/message/store','MessageController@store')->middleware('auth:api');
+
+
+//评论问题&评论回答
+
+Route::get('answer/{id}/comments','CommentsController@answer');
+Route::get('question/{id}/comments','CommentsController@question');
+
+Route::post('comment','CommentsController@store');
