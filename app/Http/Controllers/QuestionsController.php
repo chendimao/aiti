@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\QuestionRequest;
 
 
+use App\Question;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Repositories;
@@ -12,12 +13,14 @@ class QuestionsController extends Controller
 {
     protected $questionRepository;
     protected $userRepository;
+    protected $answersRepository;
     protected $ToggleFollower;
     //验证
-    public function __construct(Repositories\QuestionRepository $questionRepository,Repositories\UserRepository $userRepository)
+    public function __construct(Repositories\QuestionRepository $questionRepository,Repositories\UserRepository $userRepository,Repositories\AnswersRepository $answersRepository)
     {
         $this->questionRepository=$questionRepository;
         $this->userRepository=$userRepository;
+        $this->answersRepository=$answersRepository;
         $this->middleware('auth')->except('index','show');
     }
 
@@ -30,6 +33,13 @@ class QuestionsController extends Controller
     public function index()
     {
         $questions=$this->questionRepository->getQuestionsFeed();
+
+       // dd($questions);
+      //  $answers=$this->questionRepository->byIdWithTopicsAndAnswers();
+//        foreach($questions as $question){
+//            dd($question);
+//        }
+      //  dd($questions);
 
         return view('questions.index',compact('questions'));
     }
@@ -78,7 +88,9 @@ class QuestionsController extends Controller
     {
         //
         $question=$this->questionRepository->byIdWithTopicsAndAnswers($id);
+        $browse_count=$question->brose_count++;
 
+        Question::where('id',$id)->update(['browse_count'=>$browse_count]);
 
         return view('questions.show',compact('question'));
 
@@ -180,6 +192,12 @@ class QuestionsController extends Controller
         $user->belongsToManyFollower()->toggle($data);
         $question->increment('followers_count');
         return response()->json(['followed'=>true]);
+    }
+
+
+    public function test()
+    {
+        echo 2342;
     }
 
 

@@ -13,7 +13,7 @@ class Answer extends Model
 
     public function belongsToUser()
     {
-        return $this->belongsTo(User::class,'user_id');
+        return $this->belongsTo(User::class,'user_id','id');
     }
 
     public function belongsToQuestion(){
@@ -30,6 +30,12 @@ class Answer extends Model
 
         return $this->morphMany(Comment::class,'commentable');
 
+    }
+
+
+    public function hasOneUser()
+    {
+        return $this->hasOne(User::class,'id');
     }
 
 

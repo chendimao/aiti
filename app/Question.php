@@ -26,7 +26,7 @@ class Question extends Model
     }
 
     public function hasManyAnswer(){
-        return $this->hasMany(Answer::class);
+        return $this->hasMany(Answer::class)->latest('updated_at');
     }
 
     public function scopePublished($query){

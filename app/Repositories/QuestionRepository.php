@@ -33,7 +33,12 @@ class QuestionRepository
 
     public function getQuestionsFeed(){
 
-        return Question::published()->latest('updated_at')->with('belongsToUser')->get();
+        return Question::published()->latest('updated_at')->with('belongsToUser','hasManyAnswer')->get();
+    }
+
+    public function getQuestionsAnswer(){
+
+        return Question::published()->latest('updated_at')->with('hasManyAnswer')->first();
     }
 
 

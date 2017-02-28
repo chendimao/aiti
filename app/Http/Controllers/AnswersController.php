@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Answer;
 use App\Http\Requests\AnswersRequest;
 use App\Repositories\AnswersRepository;
-use App\User;
+
 use Illuminate\Http\Request;
 use Auth;
 
@@ -75,6 +75,17 @@ class AnswersController extends Controller
             }
 
 
+    }
+
+
+    public function QueryAnswer($question_id)
+    {
+        dd($this->answers->byIdWithQuestion($question_id));
+    }
+
+    public function test()
+    {
+        echo '234';
     }
     
 }

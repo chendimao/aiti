@@ -54,7 +54,9 @@ Route::post('/message/store','MessageController@store')->middleware('auth:api');
 
 //评论问题&评论回答
 
-Route::get('answer/{id}/comments','CommentsController@answer');
-Route::get('question/{id}/comments','CommentsController@question');
+Route::get('answer/{id}/comments','CommentsController@answer')->middleware('auth:api');
+Route::get('question/{id}/comments','CommentsController@question')->middleware('auth:api');
 
-Route::post('comment','CommentsController@store');
+
+
+

@@ -53,4 +53,9 @@ class AnswersRepository
         return Answer::find($answer_id);
     }
 
+    public function byIdWithQuestion($question_id)
+    {
+        Answer::where('question_id',$question_id)->belongsToQuestion();
+    }
+
 }
