@@ -23,7 +23,7 @@
         @if(\Auth::check())
             window.Aiti={
                 name:"{{Auth::user()->name}}",
-                avatar:"{{Auth::user()->avatar}}",
+                 avatar:"{{Auth::user()->avatar}}",
              }
         @endif
 

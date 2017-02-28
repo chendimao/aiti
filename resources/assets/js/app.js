@@ -14,7 +14,6 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('question-follow-button', require('./components/QuestionFollowButton.vue'));
 Vue.component('user-follow-button', require('./components/UserFollowButton.vue'));
 Vue.component('commend-button', require('./components/CommendButton.vue'));
 Vue.component('send-message-button', require('./components/SendMessageButton.vue'));
