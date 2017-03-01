@@ -10,6 +10,7 @@ namespace App\Repositories;
 
 
 use App\Answer;
+use App\Notifications;
 use App\Question;
 use App\Topic;
 use App\User;
@@ -19,6 +20,9 @@ class QuestionRepository
 
     public function byIdWithTopicsAndAnswers($id){
         return Question::where('id',$id)->with(['belongsToManyTopic','hasManyAnswer','belongsToUser'])->first();
+
+
+
     }
 
 
@@ -31,15 +35,20 @@ class QuestionRepository
     }
 
 
-    public function getQuestionsFeed(){
+    public function getQuestionsFeed($order){
 
-        return Question::published()->latest('updated_at')->with('belongsToUser','hasManyAnswer')->get();
+        if($order=='hot'){
+            $type='answers_count';
+        }elseif($order=='empty'){
+            $type='comments_count';
+            return Question::published()->where('comments_count',0)->with('belongsToUser','hasManyAnswer')->get();
+        }else{
+            $type='updated_at';
+        }
+
+        return Question::published()->latest($type)->with('belongsToUser','hasManyAnswer')->get();
     }
 
-    public function getQuestionsAnswer(){
-
-        return Question::published()->latest('updated_at')->with('hasManyAnswer')->first();
-    }
 
 
 
@@ -88,6 +97,11 @@ class QuestionRepository
 //    public function byIdWithCommend($id){
 //        return Answer::where('id',$id)->with('belongsToManyCommend')->get();
 //    }
+
+
+        public function Notifications(){
+            return Notifications::latest('updated_at')->first();
+        }
 
 
 

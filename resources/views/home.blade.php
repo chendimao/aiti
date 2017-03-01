@@ -8,7 +8,7 @@
                 <div class="panel-heading">控制面板</div>
 
                 <div class="panel-body">
-                    你已经登录啦~
+
                 </div>
             </div>
         </div>

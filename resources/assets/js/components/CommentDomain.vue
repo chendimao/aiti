@@ -1,9 +1,10 @@
 <template>
-    <button class="btn btn-default pull-right"
-            v-text="CountCommend"
-            v-bind:class="{'btn-success':IsCommend}"
-            v-on:click="ToggleAnswer"
-    ></button>
+  <div>
+
+
+
+
+  </div>
 </template>
 
 <script>
@@ -36,7 +37,7 @@
 
         computed(){
             CountCommend:{
-              return   this.IsCommend?(this.IsCommend=true):(this.IsCommend=false)
+                return   this.IsCommend?(this.IsCommend=true):(this.IsCommend=false)
             }
         }
 

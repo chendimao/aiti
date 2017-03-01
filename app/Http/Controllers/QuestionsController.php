@@ -6,9 +6,13 @@ use App\Http\Requests\QuestionRequest;
 
 
 use App\Question;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Repositories;
+use Illuminate\Support\Facades\Input;
+
 class QuestionsController extends Controller
 {
     protected $questionRepository;
@@ -30,9 +34,28 @@ class QuestionsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $questions=$this->questionRepository->getQuestionsFeed();
+        $type=$request->get('order');
+
+
+
+        $questions=$this->questionRepository->getQuestionsFeed($type);
+        $notifications=$this->questionRepository->Notifications();
+
+
+        $res=$this->QuestionList($request,$questions);
+
+        $questions=$res['question'];
+        $paginator=$res['paginator'];
+
+
+
+
+        return view('questions.index',compact(['questions','paginator','notifications']));
+
+
+
 
        // dd($questions);
       //  $answers=$this->questionRepository->byIdWithTopicsAndAnswers();
@@ -41,7 +64,6 @@ class QuestionsController extends Controller
 //        }
       //  dd($questions);
 
-        return view('questions.index',compact('questions'));
     }
 
     /**
@@ -88,9 +110,19 @@ class QuestionsController extends Controller
     {
         //
         $question=$this->questionRepository->byIdWithTopicsAndAnswers($id);
-        $browse_count=$question->brose_count++;
 
-        Question::where('id',$id)->update(['browse_count'=>$browse_count]);
+        if($question===null){
+            return redirect('/');
+             }
+
+
+        $question->browse_count=$question->browse_count+1;
+
+
+
+        // dd($question);
+
+        Question::where('id',$id)->update(['browse_count'=>$question->browse_count]);
 
         return view('questions.show',compact('question'));
 
@@ -198,6 +230,38 @@ class QuestionsController extends Controller
     public function test()
     {
         echo 2342;
+    }
+
+
+    //分页
+
+    function QuestionList(Request $request,$data) {
+
+
+        $data= $data->toArray();
+        $perPage = 5;
+        if (!empty($request->page)) {
+            $current_page = $request->page;
+            $current_page = $current_page <= 0 ? 1 :$current_page;
+        } else {
+            $current_page = 1;
+        }
+
+        $item = array_slice($data, ($current_page-1)*$perPage, $perPage); //按分页取数据
+        $total = count($data);
+        //也可以这样
+        //$paginator=new LengthAwarePaginator($item, $total, $perPage);
+        // $paginator=$paginator->setPath(route('admin.wxmenu.index'));
+        $paginator =new \Illuminate\Pagination\LengthAwarePaginator($item, $total, $perPage, $current_page, [
+            'path' => \Illuminate\Pagination\Paginator::resolveCurrentPath(),  //设定个要分页的url地址。也可以手动通过 $paginator ->setPath(‘路径’) 设置
+            'pageName' => 'page',
+        ]);
+        $paginator->setPath('?order='.$request->get('order'));
+        $question = $paginator->toArray()['data'];
+
+
+
+        return ['question'=>$question,'paginator'=>$paginator];
     }
 
 

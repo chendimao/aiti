@@ -159,7 +159,7 @@
 
                        @if(Auth::check())
 
-                                <form action="/questions/{{$question->id}}/answer" method='post'>
+                                <form action="/questions/{{$question->id}}/answer"   method='post'>
                                     <input type="hidden" name="_token" value="{{csrf_token()}}">
 
                                     <label for="">回复内容</label>

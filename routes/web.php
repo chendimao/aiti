@@ -25,6 +25,7 @@ Route::resource('questions','QuestionsController',[
         'create'=>'questions.create',
         'show'=>'questions.show',
         'edit'=>'questions.edit',
+        'index'=>'questions.index',
     ]
 ]);
 
@@ -33,4 +34,9 @@ Route::post('/questions/{question}/answer','AnswersController@store');
 
 
 Route::get('notifications','NotificationsController@index');
+
+
+
+
+
 

@@ -1,9 +1,5 @@
 <template>
-    <button class="btn btn-default"
-            v-text="text"
-            v-bind:class="{'btn-success':followed}"
-            v-on:click="ToggleFollow"
-    ></button>
+    <a class="icon-inverse follow tooltips icon icon-plus " v-on:click="ToggleFollow"  v-text="text"></a>
 </template>
 
 <script>

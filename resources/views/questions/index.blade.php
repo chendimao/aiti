@@ -1,7 +1,18 @@
 @extends('layouts.app')
 
 
+<style>
+    .ad{margin-bottom:20px;border:1px dashed #d3d7db;background-color:#fff;color:#3d464d;font-size:.5rem}
+    .ad h1{margin:0;padding:1rem 0;text-align:center;font-size:.8rem}
+    .ad h1,.ad h2{font-weight:600}
+    .ad h2{padding-left:20px;color:#999;text-align:left}
+    .inner_box{padding:0 20px;height:90px}
+    .ad_left{float:left;width:30%;color:#999}
+    .ad_left,.ad_right{overflow:hidden;text-overflow:ellipsis}
+    .ad_right{float:right;width:70%;color:#333;text-align:right;white-space:nowrap}
+    .ad_btn,a.ad_btn:hover{display:block;margin:0 auto 15px;padding:6px;width:200px;border-radius:3px;background-color:#00bff3;color:#fff;text-align:center}
 
+</style>
 
 @section('content')
 
@@ -24,11 +35,10 @@
         </div>
         <!-- end 新消息通知 -->
         <!-- tab切换 -->
-        <ul class="nav nav-tabs aw-nav-tabs active hidden-xs">
-            <li class="active"><a href="http://zhuangbi.me/">最新</a></li>
-            <li><a href="http://zhuangbi.me/is_recommend-1">推荐</a></li>
-            <li><a href="http://zhuangbi.me/sort_type-hot__day-7" id="sort_control_hot">热门</a></li>
-            <li><a href="http://zhuangbi.me/sort_type-unresponsive">等待回复</a></li>
+        <ul class="nav nav-tabs aw-nav-tabs active hidden-xs" id="question_tab">
+            <li class="active"><a href="{{url('/?order=news')}}">最新</a></li>
+            <li><a href="{{url('/?order=hot')}}" >热门</a></li>
+            <li><a href="{{url('/?order=empty')}}">等待回复</a></li>
         </ul>
         <!-- end tab切换 -->
 
@@ -41,15 +51,18 @@
 
 
 
-                    <div class="aw-item " data-topic-id="1792,">
-                        <a class="aw-user-name hidden-xs" data-id="44767" href="http://zhuangbi.me/people/%E7%99%BD%E7%BE%8A" rel="nofollow"><img src="{{$question->belongsToUser->avatar}}" alt=""></a>	<div class="aw-question-content">
+                    <div class="aw-item " data-topic-id="1792," id="content">
+                        <a class="aw-user-name hidden-xs" data-id="44767" href="http://zhuangbi.me/people/%E7%99%BD%E7%BE%8A" rel="nofollow"><img src="{{$question['belongs_to_user']['avatar']}}" alt=""></a>	<div class="aw-question-content">
                             <h4>
-                                <a href="{{url('questions/'.$question->id)}}">{{$question->title}}</a>
+                                <a href="{{url('questions/'.$question['id'])}}">{{$question['title']}}</a>
                             </h4>
+                            <h5 style="height:72px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">
+                                {!! $question['body'] !!}
+                            </h5>
 
                             <p>
-                                <a href="" class="aw-user-name" data-id="36098"><!--<img class="img" style="height: 16px;width: 16px;border-radius: 50%;margin: -3px 3px 0 0;" src="./发现 - 逼乎_files/avatar-min-img.png" alt=""></a> -->				<!--<span class="text-color-999">回复了问题 • -->{{$question->followers_count}} 人关注 • {{$question->answers_count}} 个回复 • 62 次浏览 • 3 小时前				</span>
-                                <span class="text-color-999 related-topic hide"> •  来自相关话题</span>
+                                <a href="" class="aw-user-name" data-id="36098"><!--<img class="img" style="height: 16px;width: 16px;border-radius: 50%;margin: -3px 3px 0 0;" src="./发现 - 逼乎_files/avatar-min-img.png" alt=""></a> -->				<!--<span class="text-color-999">回复了问题 • -->{{$question['followers_count']}} 人关注 • {{$question['answers_count']}} 个回复 • {{$question['browse_count']}} 次浏览 • 3 小时前		</a>		</span>
+
                             </p>
                         </div>
                     </div>
@@ -59,7 +72,7 @@
                 </div>
             </div>
             <div class="mod-footer">
-                <div class="page-control"><ul class="pagination pull-right"><li class="active"><a href="javascript:;">1</a></li><li><a href="http://zhuangbi.me/sort_type-new__day-0__is_recommend-0__page-2">2</a></li><li><a href="http://zhuangbi.me/sort_type-new__day-0__is_recommend-0__page-3">3</a></li><li><a href="http://zhuangbi.me/sort_type-new__day-0__is_recommend-0__page-4">4</a></li><li><a href="http://zhuangbi.me/sort_type-new__day-0__is_recommend-0__page-2">&gt;</a></li><li><a href="http://zhuangbi.me/sort_type-new__day-0__is_recommend-0__page-141">&gt;&gt;</a></li></ul></div>						</div>
+                <div class="page-control"><ul class="pagination pull-right">{{ $paginator->render() }}</ul></div>						</div>
         </div>
     </div>
     <!-- 侧边栏 -->
@@ -88,22 +101,7 @@
                 <a href="http://aiti//article/7"><i class="icon icon-comment"></i>意见反馈</a><br>
                 <a href="http://aiti//invitation/"><i class="icon icon-inviteask"></i>邀请好友加入逼乎</a>			</div>
         </div>
-        <div class="PCD_event_red2015">
-            <div class="WB_feed_spec_red2015">
-                <div class="con_l W_fl">
-                    <div class="head_pic W_fl">
-                        <img class="W_face_radius" src="./发现 - 逼乎_files/01_avatar_max.jpg">
-                        <i title="" class="W_icon"></i>
-                    </div>
-                </div>
-                <div class="con W_fr">
-                    <img class="con_bg" src="./发现 - 逼乎_files/006muzqRjw1ezz3w3pfrsj30e604s0tg.jpg" height="100%" width="100%">
-                    <p class="text_1 W_f18 W_autocut">逼乎红包</p>
-                    <p class="text_2 W_f14 W_autocut">别发1分的红包了靴靴</p>
-                    <button data-fancybox-group="thumb" rel="lightbox" class="text_3 W_f14 W_autocut"> 给装逼王发红包</button>
-                </div>
-            </div>
-        </div>
+
         <script>
             $(function(){
                 $(".W_fr button").click(function(){
@@ -115,18 +113,8 @@
                     });
                 });
             });
-        </script>					<style>
-            .ad{margin-bottom:20px;border:1px dashed #d3d7db;background-color:#fff;color:#3d464d;font-size:.5rem}
-            .ad h1{margin:0;padding:1rem 0;text-align:center;font-size:.8rem}
-            .ad h1,.ad h2{font-weight:600}
-            .ad h2{padding-left:20px;color:#999;text-align:left}
-            .inner_box{padding:0 20px;height:90px}
-            .ad_left{float:left;width:30%;color:#999}
-            .ad_left,.ad_right{overflow:hidden;text-overflow:ellipsis}
-            .ad_right{float:right;width:70%;color:#333;text-align:right;white-space:nowrap}
-            .ad_btn,a.ad_btn:hover{display:block;margin:0 auto 15px;padding:6px;width:200px;border-radius:3px;background-color:#00bff3;color:#fff;text-align:center}
+        </script>
 
-        </style>
         <div class="ad">
             <h1>广告位招租</h1>
             <h2>广告价格：</h2>
@@ -209,76 +197,7 @@
             </div>
             <a href="http://aiti//topic/channel-hot" class="interest-m">查看更多 &gt;</a>
         </div>
-        <div class="aw-mod aw-text-align-justify">
-            <div class="mod-head">
-                <h3>热门用户</h3>
-            </div>
-            <div class="mod-body">
 
-                <dl>
-                    <dt class="pull-left aw-border-radius-5 hot_user">
-                        <a href="http://aiti//people/%E6%9D%BE%E6%9C%AC%E8%8A%BD%E4%BE%9D"><img alt="" src="./发现 - 逼乎_files/26_avatar_mid(1).jpg"></a>
-                    </dt>
-                    <dd class="pull-left">
-                        <a href="http://aiti//people/%E6%9D%BE%E6%9C%AC%E8%8A%BD%E4%BE%9D" data-id="37926" class="aw-user-name">松本芽依						</a>
-                        <p class="signature"></p>
-                        <p><b>13</b> 个问题, <b>7</b> 次赞同</p>
-                    </dd>
-                </dl>
-
-                <dl>
-                    <dt class="pull-left aw-border-radius-5 hot_user">
-                        <a href="http://aiti//people/sonychina"><img alt="" src="./发现 - 逼乎_files/59_avatar_mid.jpg"></a>
-                    </dt>
-                    <dd class="pull-left">
-                        <a href="http://aiti//people/sonychina" data-id="3259" class="aw-user-name">索尼中国						</a>
-                        <p class="signature"></p>
-                        <p><b>16</b> 个问题, <b>26</b> 次赞同</p>
-                    </dd>
-                </dl>
-
-                <dl>
-                    <dt class="pull-left aw-border-radius-5 hot_user">
-                        <a href="http://aiti//people/%E7%9C%9F%E4%B8%BB"><img alt="" src="./发现 - 逼乎_files/07_avatar_mid.jpg"></a>
-                    </dt>
-                    <dd class="pull-left">
-                        <a href="http://aiti//people/%E7%9C%9F%E4%B8%BB" data-id="46507" class="aw-user-name">真主						</a>
-                        <p class="signature"></p>
-                        <p><b>15</b> 个问题, <b>24</b> 次赞同</p>
-                    </dd>
-                </dl>
-
-                <dl>
-                    <dt class="pull-left aw-border-radius-5 hot_user">
-                        <a href="http://aiti//people/mswj"><img alt="" src="./发现 - 逼乎_files/81_avatar_mid.jpg"></a>
-                    </dt>
-                    <dd class="pull-left">
-                        <a href="http://aiti//people/mswj" data-id="32881" class="aw-user-name">360安全卫士						</a>
-                        <p class="signature"></p>
-                        <p><b>24</b> 个问题, <b>29</b> 次赞同</p>
-                    </dd>
-                </dl>
-
-                <dl>
-                    <dt class="pull-left aw-border-radius-5 hot_user">
-                        <a href="http://aiti//people/HRX"><img alt="" src="./发现 - 逼乎_files/08_avatar_mid.jpg"></a>
-                    </dt>
-                    <dd class="pull-left">
-                        <a href="http://aiti//people/HRX" data-id="44608" class="aw-user-name">NVIDIA黄仁勋						</a>
-                        <p class="signature"></p>
-                        <p><b>12</b> 个问题, <b>0</b> 次赞同</p>
-                    </dd>
-                </dl>
-            </div>
-            <a href="http://aiti//people/" class="interest-m">查看更多 &gt;</a>
-        </div>					<div class="aw-mod aw-text-align-justify">
-            <div class="mod-head">
-                <h3>下载APP</h3>
-            </div>
-            <div class="mod-body">
-                <img src="./发现 - 逼乎_files/noapp.png" style="margin: 15px 0 0;">
-                <!--预留模块，万一以后真有APP了呢-->
-            </div>
         </div>
     </div>
     <!-- end 侧边栏 -->

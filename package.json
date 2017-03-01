@@ -6,7 +6,7 @@
   },
   "devDependencies": {
     "bootstrap-sass": "^3.3.7",
-    "broser": "^1.0.1",
+    "bower": "^1.0.1",
     "css-loader": "^0.26.2",
     "gulp": "^3.9.1",
     "jquery": "^3.1.0",

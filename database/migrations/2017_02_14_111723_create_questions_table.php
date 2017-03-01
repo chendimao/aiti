@@ -22,6 +22,7 @@ class CreateQuestionsTable extends Migration
             $table->integer('followers_count')->default(1);
             $table->integer('answers_count')->default(0);
             $table->integer('browse_count')->default(0);
+            $table->string('is_hidden',8)->default('F');
             $table->timestamps();
         });
     }
