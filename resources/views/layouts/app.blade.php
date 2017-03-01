@@ -67,7 +67,7 @@
             </div>
             <nav role="navigation" class="collapse navbar-collapse bs-navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="url('questions/index')" class="active"><i class="icon icon-home"></i> 发现</a></li>
+                    <li><a href="{{url('questions/index')}}" class="active"><i class="icon icon-home"></i> 发现</a></li>
 
                     <li>
                         <a >发起</a>
