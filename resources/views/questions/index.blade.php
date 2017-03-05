@@ -123,15 +123,16 @@
                 <p class="ad_left">按周</p><p class="ad_right">3,000,000.00 美元</p>
                 <p class="ad_left">按月</p><p class="ad_right">12,000,000.00 美元</p>
             </div>
-            <a class="ad_btn" onclick="AWS.dialog(&#39;inbox&#39;, &#39;装逼王&#39;);">联系我们，月入亿万！</a>
-        </div>										<div class="aw-mod aw-text-align-justify">
-            <div class="mod-head">
-                <h3>热门话题</h3>
-            </div>
-            <div class="mod-body">
+            <send-message-button class="ad_btn"></send-message-button>
+        </div>
+            <div class="aw-mod aw-text-align-justify">
+                <div class="mod-head">
+                    <h3>热门话题</h3>
+                </div>
+                <div class="mod-body">
                 <dl>
                     <dt class="pull-left aw-border-radius-5">
-                        <a href="http://aiti//topic/11"><img alt="" src="./发现 - 逼乎_files/a1f8b30b566b3002d29090807665992c_50_50.jpg"></a>
+                        <a href="http://aiti//topic/11"><img alt="" src=""></a>
                     </dt>
                     <dd class="pull-left">
                         <p class="clearfix">
@@ -144,7 +145,7 @@
                 </dl>
                 <dl>
                     <dt class="pull-left aw-border-radius-5">
-                        <a href="http://aiti//topic/2"><img alt="" src="./发现 - 逼乎_files/af978fa9061a0f0ba9168dc8228dd4e5_50_50.jpg"></a>
+                        <a href="http://aiti//topic/2"><img alt="" src=""></a>
                     </dt>
                     <dd class="pull-left">
                         <p class="clearfix">
@@ -157,7 +158,7 @@
                 </dl>
                 <dl>
                     <dt class="pull-left aw-border-radius-5">
-                        <a href="http://aiti//topic/320"><img alt="" src="./发现 - 逼乎_files/topic-mid-img.png"></a>
+                        <a href="http://aiti//topic/320"><img alt="" src=""></a>
                     </dt>
                     <dd class="pull-left">
                         <p class="clearfix">
@@ -170,7 +171,7 @@
                 </dl>
                 <dl>
                     <dt class="pull-left aw-border-radius-5">
-                        <a href="http://aiti//topic/761"><img alt="" src="./发现 - 逼乎_files/topic-mid-img.png"></a>
+                        <a href="http://aiti//topic/761"><img alt="" src=""></a>
                     </dt>
                     <dd class="pull-left">
                         <p class="clearfix">
@@ -183,7 +184,7 @@
                 </dl>
                 <dl>
                     <dt class="pull-left aw-border-radius-5">
-                        <a href="http://aiti//topic/973"><img alt="" src="./发现 - 逼乎_files/topic-mid-img.png"></a>
+                        <a href="http://aiti//topic/973"><img alt="" src=""></a>
                     </dt>
                     <dd class="pull-left">
                         <p class="clearfix">

@@ -1,49 +1,12 @@
 <template>
     <span>
 
-        <button class="btn btn-default"
+        <a class=""
                 v-text="BtnValue"
                 v-on:click="ShowSendMessage"
-        ></button>
-
-        <div class="modal fade" id="modal-send-message" tabindex="-1" role="dialog">
-
-            <div class="modal-dialog">
-
-                <div class="modal-content">
-
-                    <div class="modal-header">
-
-                        <button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title">
-                            发送私信
-                        </h4>
-                    </div>
-
-                    <div class="modal-body">
-
-                        <textarea class="form-control" name="body" id="" cols="10" rows="5" v-model="body" v-if="!status"></textarea>
-                        <div class="alert alert-success" v-if="status">
-                            私信发送成功
-                        </div>
-                        <!--<div class="alert alert-success" v-if="!status">-->
-                            <!--私信发送失败-->
-                        <!--</div>-->
-                    </div>
+        ></a>
 
 
-                    <div class="modal-footer">
-
-                        <button class="btn btn-default" type="button" data-dismiss="modal">关闭</button>
-                        <button class="btn btn-primary" type="button" @click="store">发送私信</button>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
     </span>
 
 </template>

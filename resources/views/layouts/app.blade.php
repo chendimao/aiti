@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!-- saved from url=(0019)http://aiti// -->
 <html class=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+    <script src="{{asset('resources/assets/js/jquery.1.8.3.js')}}"></script>
     <link href="{{asset('public/css/app.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('resources/assets/css/style.css')}}">
     <!-- CSRF Token -->
@@ -198,7 +198,7 @@
 <a href="http://aiti//#0" class="cd-top"><i class="icon icon-up"></i></a>
 <div class="aw-footer-wrap">
     <div class="aw-footer">
-        <div class="copy">© 2017 逼乎</div><div class="powered">Powered By WeCenter</div><div class="statistic"></div>
+        <div class="copy">© 2017 爱提网</div><div class="powered">Powered By WeCenter</div><div class="statistic"></div>
     <!--form action="https://shenghuo.alipay.com/send/payment/fill.htm" method="POST" target="_blank" accept-charset="GBK">
 <input name="optEmail" type="hidden" value="papa@ailiaili.com" />
 <input name="payAmount" type="hidden" value="6.66" />
@@ -217,7 +217,6 @@
 <!-- DO NOT REMOVE -->
 <div id="aw-ajax-box" class="aw-ajax-box"></div>
 
-<div style="display:none;" id="__crond"><img src="./发现 - 逼乎_files/1487826230" width="1" height="1"></div>
 
 <!-- Escape time: 0.046581983566284 --><!-- / DO NOT REMOVE -->
 
@@ -230,6 +229,53 @@
 <script>
     $('#flash-overlay-modal').modal();
 </script>
+
+
+
+<!--模态框-->
+
+
+<div class="modal fade" id="modal-send-message" tabindex="-1" role="dialog">
+
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">
+                    发送私信
+                </h4>
+            </div>
+
+            <div class="modal-body">
+
+                <textarea class="form-control" name="body" id="" cols="10" rows="5" v-model="body" v-if="!status"></textarea>
+                <div class="alert alert-success" v-if="status">
+                    私信发送成功
+                </div>
+                <!--<div class="alert alert-success" v-if="!status">-->
+                <!--私信发送失败-->
+                <!--</div>-->
+            </div>
+
+
+            <div class="modal-footer">
+
+                <button class="btn btn-default" type="button" data-dismiss="modal">关闭</button>
+                <button class="btn btn-primary" type="button" @click="store">发送私信</button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
 
 
 </body></html>
