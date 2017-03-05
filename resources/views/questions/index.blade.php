@@ -21,7 +21,7 @@
         <div class="aw-mod aw-notification-box hide" id="index_notification">
             <div class="mod-head common-head">
                 <h2>
-                    <span class="pull-right"><a href="http://zhuangbi.me/account/setting/privacy/#notifications" class="text-color-999"><i class="icon icon-setting"></i> 通知设置</a></span>
+                    <span class="pull-right"><a href="" class="text-color-999"><i class="icon icon-setting"></i> 通知设置</a></span>
                     <i class="icon icon-bell"></i>新通知<em class="badge badge-important" name="notification_unread_num">0</em>
                 </h2>
             </div>
@@ -30,7 +30,7 @@
             </div>
             <div class="mod-footer clearfix">
                 <a href="javascript:;" onclick="AWS.Message.read_notification(false, 0, false);" class="pull-left btn btn-mini btn-gray">我知道了</a>
-                <a href="http://zhuangbi.me/notifications/" class="pull-right btn btn-mini btn-success">查看所有</a>
+                <a href="" class="pull-right btn btn-mini btn-success">查看所有</a>
             </div>
         </div>
         <!-- end 新消息通知 -->
@@ -54,7 +54,7 @@
                     <div class="aw-item " data-topic-id="1792," id="content">
                         <a class="aw-user-name hidden-xs" data-id="44767" href="http://zhuangbi.me/people/%E7%99%BD%E7%BE%8A" rel="nofollow"><img src="{{$question['belongs_to_user']['avatar']}}" alt=""></a>	<div class="aw-question-content">
                             <h4>
-                                <a href="{{url('questions/'.$question['id'])}}">{{$question['title']}}</a>
+                                <a href="{{secure_url('questions/'.$question['id'])}}">{{$question['title']}}</a>
                             </h4>
                             <h5 style="height:72px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">
                                 {!! $question['body'] !!}
