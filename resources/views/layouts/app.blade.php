@@ -159,7 +159,7 @@
         <!-- end 用户栏 -->
         <!-- 搜索框 -->
         <div class="aw-search-box  hidden-xs hidden-sm">
-            <form class="navbar-search" action="http://aiti//search/" id="global_search_form" method="post">
+            <form class="navbar-search" action="" id="global_search_form" method="post">
                 <input class="form-control search-query" type="text" placeholder="搜索问题、话题或人" autocomplete="off" name="q" id="aw-search-query">
                 <span title="搜索" id="global_search_btns" onclick="$(&#39;#global_search_form&#39;).submit();"><i class="icon icon-search"></i></span>
                 <div class="aw-dropdown" style="display: none;">

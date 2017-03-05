@@ -52,7 +52,7 @@
 
 
                     <div class="aw-item " data-topic-id="1792," id="content">
-                        <a class="aw-user-name hidden-xs" data-id="44767" href="http://zhuangbi.me/people/%E7%99%BD%E7%BE%8A" rel="nofollow"><img src="{{$question['belongs_to_user']['avatar']}}" alt=""></a>	<div class="aw-question-content">
+                        <a class="aw-user-name hidden-xs" data-id="44767" href="" rel="nofollow"><img src="{{$question['belongs_to_user']['avatar']}}" alt=""></a>	<div class="aw-question-content">
                             <h4>
                                 <a href="{{secure_url('questions/'.$question['id'])}}">{{$question['title']}}</a>
                             </h4>
@@ -98,22 +98,11 @@
             <div class="mod-body">
                 可能修复了未登录导致的网页决绝访问的BUG<br>因CDN缓存，头像更新会存在2小时的延时<br>
                 <a href="https://github.com/kaiki/WeCenterMobile-Api" target="_blank"><i class="icon icon-reader"></i>API文档(github)</a><br>
-                <a href="http://aiti//article/7"><i class="icon icon-comment"></i>意见反馈</a><br>
-                <a href="http://aiti//invitation/"><i class="icon icon-inviteask"></i>邀请好友加入逼乎</a>			</div>
+                <a href=""><i class="icon icon-comment"></i>意见反馈</a><br>
+                <a href=""><i class="icon icon-inviteask"></i>邀请好友加入逼乎</a>			</div>
         </div>
 
-        <script>
-            $(function(){
-                $(".W_fr button").click(function(){
-                    swal({
-                        title: "给装逼王发红包",
-                        text: '用<span style="color:red">支付宝</span>扫描二维码',
-                        imageUrl: "http://ww4.sinaimg.cn/large/a15b4afegw1ezjp8y9myvj2074074js0",
-                        html: true
-                    });
-                });
-            });
-        </script>
+
 
         <div class="ad">
             <h1>广告位招租</h1>
@@ -132,12 +121,12 @@
                 <div class="mod-body">
                 <dl>
                     <dt class="pull-left aw-border-radius-5">
-                        <a href="http://aiti//topic/11"><img alt="" src=""></a>
+                        <a href=""><img alt="" src=""></a>
                     </dt>
                     <dd class="pull-left">
                         <p class="clearfix">
 						<span class="topic-tag">
-							<a href="http://aiti//topic/11" class="text" data-id="11">逼乎</a>
+							<a href="" class="text" data-id="11">爱提</a>
 						</span>
                         </p>
                         <p><b>205</b> 个问题, <b>129</b> 人关注</p>
@@ -145,12 +134,12 @@
                 </dl>
                 <dl>
                     <dt class="pull-left aw-border-radius-5">
-                        <a href="http://aiti//topic/2"><img alt="" src=""></a>
+                        <a href=""><img alt="" src=""></a>
                     </dt>
                     <dd class="pull-left">
                         <p class="clearfix">
 						<span class="topic-tag">
-							<a href="http://aiti//topic/2" class="text" data-id="2">装逼</a>
+							<a href="" class="text" data-id="2">装逼</a>
 						</span>
                         </p>
                         <p><b>816</b> 个问题, <b>423</b> 人关注</p>
@@ -158,12 +147,12 @@
                 </dl>
                 <dl>
                     <dt class="pull-left aw-border-radius-5">
-                        <a href="http://aiti//topic/320"><img alt="" src=""></a>
+                        <a href=""><img alt="" src=""></a>
                     </dt>
                     <dd class="pull-left">
                         <p class="clearfix">
 						<span class="topic-tag">
-							<a href="http://aiti//topic/320" class="text" data-id="320">GFW</a>
+							<a href="" class="text" data-id="320">GFW</a>
 						</span>
                         </p>
                         <p><b>3</b> 个问题, <b>7</b> 人关注</p>
@@ -171,12 +160,12 @@
                 </dl>
                 <dl>
                     <dt class="pull-left aw-border-radius-5">
-                        <a href="http://aiti//topic/761"><img alt="" src=""></a>
+                        <a href=""><img alt="" src=""></a>
                     </dt>
                     <dd class="pull-left">
                         <p class="clearfix">
 						<span class="topic-tag">
-							<a href="http://aiti//topic/761" class="text" data-id="761">歌手</a>
+							<a href="" class="text" data-id="761">歌手</a>
 						</span>
                         </p>
                         <p><b>2</b> 个问题, <b>4</b> 人关注</p>
@@ -184,19 +173,19 @@
                 </dl>
                 <dl>
                     <dt class="pull-left aw-border-radius-5">
-                        <a href="http://aiti//topic/973"><img alt="" src=""></a>
+                        <a href=""><img alt="" src=""></a>
                     </dt>
                     <dd class="pull-left">
                         <p class="clearfix">
 						<span class="topic-tag">
-							<a href="http://aiti//topic/973" class="text" data-id="973">辩论</a>
+							<a href="" class="text" data-id="973">辩论</a>
 						</span>
                         </p>
                         <p><b>2</b> 个问题, <b>4</b> 人关注</p>
                     </dd>
                 </dl>
             </div>
-            <a href="http://aiti//topic/channel-hot" class="interest-m">查看更多 &gt;</a>
+            <a href="" class="interest-m">查看更多 &gt;</a>
         </div>
 
         </div>
