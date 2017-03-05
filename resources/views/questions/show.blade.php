@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <link href="{{asset('resources/assets/css/question_content.css')}}" rel="stylesheet" type="text/css"><!--20150706-->
+    <link href="{{secure_url('resources/assets/css/question_content.css')}}" rel="stylesheet" type="text/css"><!--20150706-->
 
 
 
@@ -93,7 +93,7 @@
 
                                 <!-- 相关链接 -->
                                 <div class="aw-question-related-box hide">
-                                    <form action="http://zhuangbi.me/publish/ajax/save_related_link/" method="post" onsubmit="return false" id="related_link_form">
+                                    <form action="" method="post" onsubmit="return false" id="related_link_form">
                                         <div class="mod-head">
                                             <h2>与内容相关的链接</h2>
                                         </div>
@@ -113,10 +113,10 @@
                         <div class="aw-mod aw-question-comment">
                             <div class="mod-head">
                                 <ul class="nav nav-tabs aw-nav-tabs active">
-                                    <li class="active"><a href="http://zhuangbi.me/question/2847&amp;sort_key=agree_count&amp;sort=DESC">按票数排序</a></li>
-                                    <li><a href="http://zhuangbi.me/question/2847?sort_key=add_time&amp;sort=DESC">按时间排序</a></li>
-                                    <li><a href="http://zhuangbi.me/question/2847?sort_key=add_time&amp;sort=ASC">按时间倒序</a></li>
-                                    <li><a href="http://zhuangbi.me/question/2847?uid=focus">只看关注的人</a></li>
+                                    <li class="active"><a href="">按票数排序</a></li>
+                                    <li><a href="">按时间排序</a></li>
+                                    <li><a href="">按时间倒序</a></li>
+                                    <li><a href="">只看关注的人</a></li>
 
 
                                     <h2 class="hidden-xs">{{$question->answers_count}} 个回复</h2>
@@ -132,7 +132,7 @@
                                         <a class="aw-user-img aw-border-radius-5" href="{{$answer->belongsToUser->avatar}}" data-id="46257"><img src="{{$answer->belongsToUser->avatar}}" alt="{{$answer->belongsToUser->name}}"></a>										<!-- end 用户头像 -->
                                         <div class="title">
                                             <p>
-                                                <a class="aw-user-name" href="http://zhuangbi.me/people/%E6%A5%A0%E7%9D%BF%E4%B8%8D%E5%8F%AF%E5%BD%93" data-id="46257">{{$answer->belongsToUser->name}}</a>
+                                                <a class="aw-user-name" href="" data-id="46257">{{$answer->belongsToUser->name}}</a>
                                             </p>
                                             <p class="text-color-999 aw-agree-by hide">
                                                 赞同来自:
@@ -295,13 +295,13 @@
                             </div>
                             <div class="mod-body font-size-12">
                                 <ul>
-                                    <li><a href="http://zhuangbi.me/question/2325">他姓江，总是戴着一副黑框眼镜。</a></li>
-                                    <li><a href="http://zhuangbi.me/question/1576">总是用后入式，还有别的姿势吗？</a></li>
-                                    <li><a href="http://zhuangbi.me/question/2165">最近总是觉得野屌膨胀，很想操</a></li>
-                                    <li><a href="http://zhuangbi.me/question/495">为什么最近我总是发现一些也叫做MC石头的人？</a></li>
-                                    <li><a href="http://zhuangbi.me/question/1333">我马上降落在北京天安门广场了</a></li>
-                                    <li><a href="http://zhuangbi.me/question/226">为什么我的老大汪建维总是能够装逼于无形 </a></li>
-                                    <li><a href="http://zhuangbi.me/question/1281">从小就家缠万贯，请告诉我怎么才能装一个穷逼。姑娘们总是迷恋我的钱，而我只想要一份普通的爱情。</a></li>
+                                    <li><a href="">他姓江，总是戴着一副黑框眼镜。</a></li>
+                                    <li><a href="">总是用后入式，还有别的姿势吗？</a></li>
+                                    <li><a href="">最近总是觉得野屌膨胀，很想操</a></li>
+                                    <li><a href="">为什么最近我总是发现一些也叫做MC石头的人？</a></li>
+                                    <li><a href="">我马上降落在北京天安门广场了</a></li>
+                                    <li><a href="">为什么我的老大汪建维总是能够装逼于无形 </a></li>
+                                    <li><a href="">从小就家缠万贯，请告诉我怎么才能装一个穷逼。姑娘们总是迷恋我的钱，而我只想要一份普通的爱情。</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -318,7 +318,7 @@
                                     <li>浏览: <span class="aw-text-color-blue">32</span></li>
                                     <li>关注: <span class="aw-text-color-blue">2</span> 人</li>
 
-                                    <li class="aw-border-radius-5" id="focus_users"><a href="http://zhuangbi.me/people/%E6%A5%A0%E7%9D%BF%E4%B8%8D%E5%8F%AF%E5%BD%93"><img src="./陨石为什么总是落在陨石坑里_ - 逼乎_files/57_avatar_mid.jpg" class="aw-user-name" data-id="46257" alt="楠睿不可当"></a> <a href="http://zhuangbi.me/people/%E8%B5%B5%E9%9B%B7"><img src="./陨石为什么总是落在陨石坑里_ - 逼乎_files/59_avatar_mid(1).jpg" class="aw-user-name" data-id="48159" alt="赵雷"></a> </li>
+                                    <li class="aw-border-radius-5" id="focus_users"><a href=""><img src="./陨石为什么总是落在陨石坑里_ - 逼乎_files/57_avatar_mid.jpg" class="aw-user-name" data-id="46257" alt="楠睿不可当"></a> <a href=""><img src="./陨石为什么总是落在陨石坑里_ - 逼乎_files/59_avatar_mid(1).jpg" class="aw-user-name" data-id="48159" alt="赵雷"></a> </li>
                                 </ul>
                             </div>
                         </div>
