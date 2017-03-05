@@ -53,7 +53,7 @@
     <div class="container">
         <!-- logo -->
         <div class="aw-logo hidden-xs">
-            <a href="http://aiti//"></a>
+            <a href=""></a>
         </div>
         <!-- end logo -->
         <!-- 导航 -->
@@ -74,7 +74,7 @@
                         <div class="dropdown-list pull-right">
                             <ul id="extensions-nav-list">
                                 <li><a href="{{secure_url('questions/create')}}"><i class="icon icon-topic"></i> 问题</a></li>
-                                <li><a href="http://aiti//reader/"><i class="icon icon-reader"></i>文章</a></li>
+                                <li><a href=""><i class="icon icon-reader"></i>文章</a></li>
                             </ul>
                         </div>
 
@@ -90,7 +90,7 @@
                                 <ul id="header_notification_list"><p class="aw-padding10" align="center">没有未读通知</p></ul>
                             </div>
                             <div class="mod-footer">
-                                <a href="http://aiti//notifications/">查看全部</a>
+                                <a href="">查看全部</a>
                             </div>
                         </div>
                     </li>
@@ -99,7 +99,7 @@
                         <a style="font-weight:bold;">· · ·</a>
                         <div class="dropdown-list pull-right">
                             <ul id="extensions-nav-list">
-                                <li><a href="http://aiti//topic/"><i class="icon icon-topic"></i> 关于作者</a></li>
+                                <li><a href=""><i class="icon icon-topic"></i> 关于作者</a></li>
 
                             </ul>
                         </div>
@@ -139,7 +139,7 @@
                 </a>
                 <div class="aw-dropdown dropdown-list pull-left">
                     <ul class="aw-dropdown-list">
-                        <li><a href="http://aiti//inbox/"><i class="icon icon-inbox"></i> 私信<span class="badge badge-important hide" id="inbox_unread" style="display: none;">0</span></a></li>
+                        <li><a href=""><i class="icon icon-inbox"></i> 私信<span class="badge badge-important hide" id="inbox_unread" style="display: none;">0</span></a></li>
 
                         <li><a href="{{secure_url('/logout')}}"><i class="icon icon-logout"></i> 退出</a></li>
                     </ul>
