@@ -36,9 +36,9 @@
         <!-- end 新消息通知 -->
         <!-- tab切换 -->
         <ul class="nav nav-tabs aw-nav-tabs active hidden-xs" id="question_tab">
-            <li class="active"><a href="{{url('/?order=news')}}">最新</a></li>
-            <li><a href="{{url('/?order=hot')}}" >热门</a></li>
-            <li><a href="{{url('/?order=empty')}}">等待回复</a></li>
+            <li class="active"><a href="{{secure_url('/?order=news')}}">最新</a></li>
+            <li><a href="{{secure_url('/?order=hot')}}" >热门</a></li>
+            <li><a href="{{secure_url('/?order=empty')}}">等待回复</a></li>
         </ul>
         <!-- end tab切换 -->
 

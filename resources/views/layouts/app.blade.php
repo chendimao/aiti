@@ -67,13 +67,13 @@
             </div>
             <nav role="navigation" class="collapse navbar-collapse bs-navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="{{url('questions/index')}}" class="active"><i class="icon icon-home"></i> 发现</a></li>
+                    <li><a href="{{secure_url('questions/index')}}" class="active"><i class="icon icon-home"></i> 发现</a></li>
 
                     <li>
                         <a >发起</a>
                         <div class="dropdown-list pull-right">
                             <ul id="extensions-nav-list">
-                                <li><a href="{{url('questions/create')}}"><i class="icon icon-topic"></i> 问题</a></li>
+                                <li><a href="{{secure_url('questions/create')}}"><i class="icon icon-topic"></i> 问题</a></li>
                                 <li><a href="http://aiti//reader/"><i class="icon icon-reader"></i>文章</a></li>
                             </ul>
                         </div>
@@ -83,7 +83,7 @@
 
 
                     <li>
-                        <a href="{{url('/notifications')}}" class=""><i class="icon icon-bell"></i> 通知</a>
+                        <a href="{{secure_url('/notifications')}}" class=""><i class="icon icon-bell"></i> 通知</a>
                         <span class="badge badge-important" style="display:none" id="notifications_unread">0</span>
                         <div class="aw-dropdown pull-left hidden-xs">
                             <div class="mod-body">
@@ -141,14 +141,14 @@
                     <ul class="aw-dropdown-list">
                         <li><a href="http://aiti//inbox/"><i class="icon icon-inbox"></i> 私信<span class="badge badge-important hide" id="inbox_unread" style="display: none;">0</span></a></li>
 
-                        <li><a href="{{url('/logout')}}"><i class="icon icon-logout"></i> 退出</a></li>
+                        <li><a href="{{secure_url('/logout')}}"><i class="icon icon-logout"></i> 退出</a></li>
                     </ul>
                 </div>
                 @else
 
 
-                    <a href="{{url('/login')}}"  class="pull-right btn btn-mini btn-success publish" style="margin-right: 5px;padding-top:4px;height: 30px;">登录</a>
-                    <a href="{{url('/register')}}"  class="pull-right btn btn-mini btn-success publish"style="margin-right: 5px;padding-top:4px;height: 30px;" >注册</a>
+                    <a href="{{secure_url('/login')}}"  class="pull-right btn btn-mini btn-success publish" style="margin-right: 5px;padding-top:4px;height: 30px;">登录</a>
+                    <a href="{{secure_url('/register')}}"  class="pull-right btn btn-mini btn-success publish"style="margin-right: 5px;padding-top:4px;height: 30px;" >注册</a>
 
 
 
@@ -195,7 +195,7 @@
     </div>
 </div>
 
-<a href="http://aiti//#0" class="cd-top"><i class="icon icon-up"></i></a>
+<a href="" class="cd-top"><i class="icon icon-up"></i></a>
 <div class="aw-footer-wrap">
     <div class="aw-footer">
         <div class="copy">© 2017 爱提网</div><div class="powered">Powered By WeCenter</div><div class="statistic"></div>
