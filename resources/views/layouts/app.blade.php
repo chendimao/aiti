@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <!-- saved from url=(0019)http://aiti// -->
 <html class=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <script src="{{asset('resources/assets/js/jquery.1.8.3.js')}}"></script>
-    <link href="{{asset('public/css/app.css')}}" rel="stylesheet">
-    <link rel="stylesheet" href="{{asset('resources/assets/css/style.css')}}">
+    <script src="../../resources/assets/js/jquery.1.8.3.js"></script>
+    <link href="../../../public/css/app.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../resources/assets/css/style.css">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -16,7 +16,7 @@
     <meta name="description" content="爱提网 提问 php laravel ">
     <!--<base href="http://aiti//">--><base href="."><!--[if IE]></base><![endif]-->
 
-    <link href="{{asset('/resources/assets/css/common.css')}}" rel="stylesheet" type="text/css"><!--20150706-->
+    <link href="../../resources/assets/css/common.css" rel="stylesheet" type="text/css"><!--20150706-->
 
     <script>
         window.Laravel = <?php echo json_encode([
@@ -38,7 +38,7 @@
     <style type="text/css">.fancybox-margin{margin-right:17px;}</style></head>
 <body  ><noscript unselectable="on" id="noscript">
     &lt;div class="aw-404 aw-404-wrap container"&gt;
-    &lt;img src="{{asset('resources/images/avatar/no-js.jpg')}}"&gt;
+    &lt;img src="../../resources/images/avatar/no-js.jpg"&gt;
     &lt;p&gt;你的浏览器禁用了JavaScript, 请开启后刷新浏览器获得更好的体验!&lt;/p&gt;
     &lt;/div&gt;
 </noscript>
@@ -224,7 +224,7 @@
 </div>
 
 <!-- Scripts -->
-<script src="{{asset('public/js/app.js')}}"></script>
+<script src="../../../public/js/app.js"></script>
 @yield('js')
 <script>
     $('#flash-overlay-modal').modal();
