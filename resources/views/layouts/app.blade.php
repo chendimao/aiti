@@ -80,6 +80,7 @@
 
                     </li>
 
+                    <li><a href="{{secure_url('questions/index')}}" class="active"><i class="icon icon-home"></i> 教程</a></li>
 
 
                     <li>
@@ -141,7 +142,13 @@
                     <ul class="aw-dropdown-list">
                         <li><a href=""><i class="icon icon-inbox"></i> 私信<span class="badge badge-important hide" id="inbox_unread" style="display: none;">0</span></a></li>
 
-                        <li><a href="{{secure_url('/logout')}}"><i class="icon icon-logout"></i> 退出</a></li>
+                        <li><a href="{{secure_url('/logout')}}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();"><i class="icon icon-logout"></i> 退出</a></li>
+
+                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
+
                     </ul>
                 </div>
                 @else
