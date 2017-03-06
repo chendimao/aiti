@@ -41,12 +41,15 @@ class QuestionRepository
             $type='answers_count';
         }elseif($order=='empty'){
             $type='comments_count';
-            return Question::published()->where('comments_count',0)->with('belongsToUser','hasManyAnswer')->get();
+            return Question::published()->where('comments_count',0)->with('belongsToUser','hasManyAnswer','belongsToManyTopic')->get();
+        }elseif($order=='my'){
+            return Question::published()->where('user_id',\Auth::user()->id)->with('belongsToUser','hasManyAnswer','belongsToManyTopic')->get();
+
         }else{
             $type='updated_at';
         }
 
-        return Question::published()->latest($type)->with('belongsToUser','hasManyAnswer')->get();
+        return Question::published()->latest($type)->with('belongsToUser','hasManyAnswer','belongsToManyTopic')->get();
     }
 
 
@@ -93,6 +96,8 @@ class QuestionRepository
     public function byIdWithFollower($id){
         return User::where('id',$id)->with('belongsToManyFollower')->get();
     }
+    
+
 
 //    public function byIdWithCommend($id){
 //        return Answer::where('id',$id)->with('belongsToManyCommend')->get();

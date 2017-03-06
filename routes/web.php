@@ -36,6 +36,9 @@ Route::post('/questions/{question}/answer','AnswersController@store');
 Route::get('notifications','NotificationsController@index');
 
 
+Route::resource('user','UsersController');
+
+
 
 
 

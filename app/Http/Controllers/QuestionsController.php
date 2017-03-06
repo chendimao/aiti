@@ -41,6 +41,7 @@ class QuestionsController extends Controller
 
 
         $questions=$this->questionRepository->getQuestionsFeed($type);
+
         $notifications=$this->questionRepository->Notifications();
 
 
@@ -48,7 +49,6 @@ class QuestionsController extends Controller
 
         $questions=$res['question'];
         $paginator=$res['paginator'];
-
 
 
 
