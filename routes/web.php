@@ -36,8 +36,18 @@ Route::post('/questions/{question}/answer','AnswersController@store');
 Route::get('notifications','NotificationsController@index');
 
 
+//用户信息路由
+
 Route::resource('user','UsersController');
 
+//Route::get('user','UsersController@index');
+//Route::post('user','UsersController@store');
+//Route::put('user/{$user}/','UsersController@update');
+//Route::get('/user/{$user}/edit/',function(){
+//    echo "24234";
+//});
+//上传用户头像
+Route::post('/user/upavatar','UsersController@UpUserAvatar');
 
 
 

@@ -8,9 +8,13 @@
     <meta name="keywords" content="fly,layui,前端社区">
     <meta name="description" content="Fly社区是模块化前端UI框架Layui的官网社区，致力于为web开发提供强劲动力">
 
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
+    {{--<meta name="csrf-token" content="{{ csrf_token() }}">--}}
     <link rel="stylesheet" href="../../../public/res/layui/css/layui.css">
     <link rel="stylesheet" href="../../../public/res/css/global.css">
+    <script src="../../resources/assets/js/jquery.1.8.3.js"></script>
+
 </head>
 <script>
     window.Laravel = <?php echo json_encode([
@@ -47,14 +51,14 @@
         <div class="nav-user">
             <!-- 未登入状态 -->
            @if(\Auth::check())
-                <a class="avatar" href="{{\Auth::user()->avatar}}">
+                <a class="avatar" href="{{url('/user')}}">
                     <img src="{{\Auth::user()->avatar}}">
                     <cite>{{\Auth::user()->name}}</cite>
                     <i>VIP2</i>
                 </a>
                 <div class="nav">
-                    <a href="/user/set/"><i class="iconfont icon-shezhi"></i>设置</a>
-                    <a href="{{secure_url('/logout')}}" onclick="event.preventDefault();
+                    <a href="{{url('user').'/'.\Auth::user()->id.'/edit'}}"><i class="iconfont icon-shezhi"></i>设置</a>
+                    <a href="{{url('/logout')}}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();"><i class="iconfont icon-tuichu"  style="top: 0; font-size: 22px;"></i>退了</a>
 
                     <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
@@ -65,7 +69,7 @@
 
            @else
                 <a class="unlogin" href="user/login.html"><i class="iconfont icon-touxiang"></i></a>
-                <span><a href="{{secure_url('/login')}}">登入</a><a href="{{secure_url('/register')}}">注册</a></span>
+                <span><a href="{{url('/login')}}">登入</a><a href="{{secure_url('/register')}}">注册</a></span>
                 <p class="out-login">
                     <a href="" onclick="layer.msg('正在通过QQ登入', {icon:16, shade: 0.1, time:0})" class="iconfont icon-qq" title="QQ登入"></a>
                     <a href="" onclick="layer.msg('正在通过微博登入', {icon:16, shade: 0.1, time:0})" class="iconfont icon-weibo" title="微博登入"></a>
@@ -89,7 +93,7 @@
         <a href="http://fly.layui.com/jie/2461.html" target="_blank">微信公众号</a>
     </p>
 </div>
-<script src="../res/layui/layui.js"></script>
+<script src="../../public/res/layui/layui.js"></script>
 <script>
     layui.cache.page = '';
     layui.cache.user = {
@@ -101,7 +105,7 @@
     };
     layui.config({
         version: "1.0.0"
-        ,base: '../res/mods/'
+        ,base: '../../../public/res/mods/'
     }).extend({
         fly: 'index'
     }).use('fly');
@@ -110,6 +114,9 @@
 
 <!-- Scripts -->
 <script src="../../../public/js/app.js"></script>
+<script src="../../resources/assets/js/layer.js"></script>
+
+<script src="../../resources/assets/js/update_img.js"></script>
 @yield('js')
 <script>
     $('#flash-overlay-modal').modal();

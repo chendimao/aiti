@@ -75,4 +75,19 @@ class User extends Authenticatable
         return UserFollow::where('follower_id',$follower_id)->where('followed_id',$followed_id);
     }
 
+
+    //用户发表的问题
+    public function hasManyQuestion()
+    {
+        return $this->hasMany(Question::class,'user_id','id');
+    }
+    
+    //用户与评论之间的多对多关系
+
+    public function belongsToManyAnswer()
+    {
+        return $this->belongsToMany(Answer::class,'answers_users','user_id','answers_id');
+    }
+
+
 }

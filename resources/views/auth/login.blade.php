@@ -40,7 +40,7 @@
                     {{--</div>--}}
                 {{--</div>--}}
                 <div class="layui-form-item">
-                    <button class="layui-btn" lay-filter="*" lay-submit>立即登录</button>
+                    <button type="submit" class="layui-btn" lay-filter="*" >立即登录</button>
                     <span style="padding-left:20px;">
           <a href="{{ url('/password/reset') }}">忘记密码？</a>
         </span>
